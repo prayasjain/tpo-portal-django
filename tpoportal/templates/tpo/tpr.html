@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+    {% load static %}
+<link rel="stylesheet" href="{% static 'css/base3.css' %}"/>
+        <title>TPO Portal</title>
+    </head>
+
+    <body>
+     <div id="bigwrapper">
+    <header id="top"><h1>TPO Portal</h1></header>
+    <nav id="topmenu">
+        <ul>
+        <li><a href="/main" class="mainbar">Go To Main Page</a></li>
+        <li><a href="{% url 'auth:logout' %}?next=/" class="mainbar">Logout</a></li>
+       
+        </ul>
+    </nav>
+       <h1> Department TPR and  Contactdetails </h1>
+
+       	<!-- {{ student.0 }} <br> 
+       	{{ student.1 }} <br>
+    	{{ student.2 }} <br> -->
+        
+    	
+        <h3> The following are the TPR's, and their E-Mail Id's </h3>
+    	{% if tab %}
+        <table  BORDER="1" CELLSPACING="3" CELLPADDING="5">
+        <tr> <th>Roll Number</th> <th>Name </th> <th>E-Mail Address</th>  <th>Department</th></tr>
+        {% for c in tab  %}
+    		<tr> <td> {{ c.0 }} </td> <td> {{ c.1 }} </td> <td> {{ c.2 }} </td> <td> {{ c.3 }}  </td></tr>
+    	{% endfor %}
+        </table>
+    	{% endif %}
+
+        <br> <a href="/main">Go To Main Page</a>
+
+
+
+    	   <footer id="the_footer">
+        CopyRight Details
+        </footer>
+        </div>
+
+    </body>
+</html>

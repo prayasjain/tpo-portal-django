@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+     {% load static %}
+<link rel="stylesheet" href="{% static 'css/base3.css' %}"/>
+        <title>TPO Portal</title>
+    </head>
+
+    <body>
+         <div id="bigwrapper">
+    <header id="top"><h1>TPO Portal</h1></header>
+    <nav id="topmenu">
+        <ul>
+        <li><a href="/main" class="mainbar">Go To Main Page</a></li>
+        <li><a href="{% url 'auth:logout' %}?next=/" class="mainbar">Logout</a></li>
+       
+        </ul>
+    
+    </nav>
+
+       <h1> Register a company for willingness </h1>
+
+        
+        
+        <form id="willing_form" method="post" action="/main/admin/comp_will/">
+            {% csrf_token %}
+            <select name="company">
+            {% if companies  %}
+            
+                {% for company in companies %}
+                <option value= {{ company.0 }} > {{ company.2 }} ( {{ company.3 }}  ) </option>
+                {% endfor %}   
+
+            {% endif %}
+
+            </select>
+            
+            <select name="department">
+            {% if departments  %}
+            
+                {% for dep in departments %}
+                <option value= {{ dep.0 }} > {{ dep.1 }}  </option>
+                {% endfor %}   
+            {% endif %}             
+            </select>
+            
+            <select name="class">
+            {% if classes  %}
+            
+                {% for c in classes %}
+                <option value= {{ c.0 }} > {{ c.1 }} ( {{ c.2 }} )  </option>
+                {% endfor %}   
+            {% endif %}             
+            </select>
+             <input type="number" name="cgpa" step=0.01 min=0 max=10 required="True">
+            <br>
+
+            <input type="submit" name="submit" value="Add Willingness" />
+        </form>
+        <br> <a href="/main/admin">Go Back</a>
+
+        <footer id="the_footer">
+        CopyRight Details
+        </footer>
+    
+
+    </body>
+
+</html>

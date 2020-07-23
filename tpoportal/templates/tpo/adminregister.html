@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+     {% load static %}
+<link rel="stylesheet" href="{% static 'css/base3.css' %}"/>
+        <title>TPO Portal</title>
+    </head>
+
+    <body>
+    <div id="bigwrapper">
+    <header id="top"><h1>TPO Portal</h1></header>
+    <nav id="topmenu">
+        <ul>
+        <li><a href="/main" class="mainbar">Go To Main Page</a></li>
+        <li><a href="{% url 'auth:logout' %}?next=/" class="mainbar">Logout</a></li>
+       
+        </ul>
+    
+    </nav>
+        <h1>Register an Administrator</h1>
+        
+            
+        <form id="admin_form" method="post" action="/main/admin/adminregister">
+
+            {% csrf_token %}
+
+            Name <input type="text" name="name" required="True">
+            <br>
+            E-Mail Address <input type="email" name="email" required="True">
+            
+            <br>
+            Type <input type="text" name="type" required="True">
+            <br>
+            
+
+            <input type="submit" name="submit" value="Add Admin" />
+        </form>
+        <br> <a href="/main/admin">Go Back</a>
+        <footer id="the_footer">
+        CopyRight Details
+        </footer>
+    </body>
+
+</html>

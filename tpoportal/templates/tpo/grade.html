@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+      {% load static %}
+<link rel="stylesheet" href="{% static 'css/base3.css' %}"/>
+        <title>TPO Portal</title>
+    </head>
+
+    <body>
+     <div id="bigwrapper">
+    <header id="top"><h1>TPO Portal</h1></header>
+
+    <nav id="topmenu">
+        <ul>
+        <li><a href="/main" class="mainbar">Go To Main Page</a></li>
+        <li><a href="{% url 'auth:logout' %}?next=/" class="mainbar">Logout</a></li>
+       
+        </ul>
+    
+    </nav>
+       <h1> Upload CGPA </h1>
+
+        
+        
+        <form id="cgpa_form" method="post" action="/main/student/grade/">
+            {% csrf_token %}
+            Semester ( For full cpi , enter 0)
+            <input type="number" name="sem" value ="0" required="True" min=0 max =10 > <br>
+            CGPA ( 0 to 10)
+             <input type="number" name="cgpa" step=0.01 min=0 max=10 required="True" value = "0.00"  >
+            <br>
+
+            <input type="submit" name="submit" value="Submit CGPA" />
+        </form>
+
+        <br> <a href="/main/student">Go To Main Page</a>
+        <footer id="the_footer">
+        CopyRight Details
+        </footer>
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TPO Portal</title>
+        {% load static %}
+<link rel="stylesheet" href="{% static 'css/base3.css' %}"/>
+    </head>
+
+    <body>
+      <div id="bigwrapper">
+    <header id="top"><h1>TPO Portal</h1></header>
+
+    <nav id="topmenu">
+        <ul>
+        <li><a href="/main" class="mainbar">Go To Main Page</a></li>
+        <li><a href="{% url 'auth:logout' %}?next=/" class="mainbar">Logout</a></li>
+       
+        </ul>
+    
+    </nav>
+{% load static %}
+
+{% block content %}
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="picture">
+    <button type="submit">Upload</button>
+  </form>
+
+  {% if uploaded_file_url %}
+    <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+  {% endif %}
+
+ 
+{% endblock %}
+<br> <a href="/main/student">Go Back</a>
+<footer id="the_footer">
+        CopyRight Details
+        </footer>
+        </div>
+</body>
+</html>

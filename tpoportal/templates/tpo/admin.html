@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" >
+<head>
+
+<meta charset="utf-8" /><title>TPO Portal</title>
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/base3.css' %}"/></head>
+<body>
+    <div id="bigwrapper">
+
+
+    <header id="top"><h1>TPO Portal</h1></header>
+    <nav id="topmenu">
+        <ul>
+        <li><a href="/main" class="mainbar">Go To Main Page</a></li>
+        <li><a href="{% url 'auth:logout' %}?next=/" class="mainbar">Logout</a></li>
+        
+        </ul>
+    
+    </nav>
+   <h1> Welcome Admin {{ admin.1 }} </h1>
+
+    <ul>
+        
+        <li><a href="/main/admin/post/">Add a Post</li>
+        <li><a href="/main/admin/help/">Register a Person for Help</li>
+        <li><a href="/main/admin/company/">Register a Company</li>
+        <li><a href = "/main/admin/comp_will/"> Open Willingness for a company</li>
+        <li><a href = "/main/admin/tprregister"> Add TPR for a department</li>
+        <li><a href = "/main/admin/adminregister"> Register other accounts as administrators</a></li>
+        
+    </ul>
+    <br>
+    <br>
+    <br>
+    
+        <footer id="the_footer">
+        CopyRight Details
+        </footer>
+    
+    </div>
+
+</body>
+
+</html>
+
+

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+     {% load static %}
+<link rel="stylesheet" href="{% static 'css/base3.css' %}"/>
+        <title>TPO Portal</title>
+    </head>
+
+    <body>
+    <div id="bigwrapper">
+    <header id="top"><h1>TPO Portal</h1></header>
+    <nav id="topmenu">
+        <ul>
+        <li><a href="/main" class="mainbar">Go To Main Page</a></li>
+        <li><a href="{% url 'auth:logout' %}?next=/" class="mainbar">Logout</a></li>
+       
+        </ul>
+    
+    </nav>
+
+        <h1>Add a TPR</h1>
+        {% if depts %}
+            
+        <form id="tpr_form" method="post" action="/main/admin/tprregister">
+
+            {% csrf_token %}
+
+            Roll Number <input type="text" name="roll" required="True">
+            <br>
+            Choose Department:
+            <select name="dept">
+                {% for d in depts %}
+                <option value={{ d.0 }} > {{ d.1 }} </option>
+                {% endfor %}
+
+            </select>
+            <br>
+            
+
+            <input type="submit" name="submit" value="Add TPR" />
+        </form>
+        {% endif %}
+        <br> <a href="/main/admin">Go Back</a>
+         <footer id="the_footer">
+        CopyRight Details
+        </footer>
+    </body>
+
+</html>

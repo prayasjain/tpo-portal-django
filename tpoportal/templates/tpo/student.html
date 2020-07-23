@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>TPO Portal</title>
+        {% load static %}
+<link rel="stylesheet" href="{% static 'css/base3.css' %}"/>
+    </head>
+
+    <body>
+    <div id="bigwrapper">
+    <header id="top"><h1>TPO Portal</h1></header>
+    <nav id="topmenu">
+        <ul>
+        <li><a href="/main" class="mainbar">Go To Main Page</a></li>
+        <li><a href="{% url 'auth:logout' %}?next=/" class="mainbar">Logout</a></li>
+       
+        </ul>
+    
+    </nav>
+
+    <h1>Welcome Student {{ student.3 }}</h1>
+
+     <ul>
+    	
+    	<li><a href="/main/student/willing/">Willingness</li>
+    	<li><a href="/main/student/update/">Update</li>
+        <li><a href="/main/student/resume/">Resume Upload</li>
+        <li><a href="/main/student/picture/">Profile Picture Upload</li>
+        <li><a href="/main/student/grade/">Upload/Update Grades</a></li>
+        
+    </ul>
+
+    <footer id="the_footer">
+        CopyRight Details
+        </footer>
+    
+    </div>
+    </body>
+
+</html>

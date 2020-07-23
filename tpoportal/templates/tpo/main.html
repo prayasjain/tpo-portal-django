@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" >
+<head><meta charset="utf-8" />
+{% load static %}
+<title>TPO Portal</title><link rel="stylesheet" href="{% static 'css/base3.css' %}"/></head></head>
+<body>
+    <div id="bigwrapper">
+    <header id="top"><h1>TPO Portal</h1></header>
+    <nav id="topmenu">
+        <ul>
+        <li><a href="/main" class="mainbar">Go To Main Page</a></li>
+        <li><a href="{% url 'auth:logout' %}?next=/" class="mainbar">Logout</a></li>
+       
+        </ul>
+    
+    </nav>
+
+    <h1> Welcome to TPO Portal, {{ user.get_full_name }} </h1>
+
+        <ul> 
+        <li> <a href="/main/admin/">Login as an Administrator</a></li>
+        <li> <a href="/main/student/">Login as a Student</a></li>
+        <li> <a href="/main/register/">Register as a Student</a></li>
+        <li> <a href="/main/post/">Messages and Notifications</a></li>
+        <li> <a href="/main/tpr/">Department TPR and their Contact Details</a></li>
+        <li><a href="{% url 'auth:logout' %}?next=/">Logout</a></li>
+        </ul>
+        <h3> For Help/ Assistance Contact </h3>
+        {% if help  %}
+           
+                {% for helper in help %}
+                
+                <h4>{{ helper.2  }}</h4>
+                    
+                
+                <ul><li>   {{ helper.4  }}</li> <li> {{ helper.5  }}</li></ul> 
+                {% endfor %}
+
+           
+        {% endif %} 
+        
+        
+        
+        <footer id="the_footer">
+        CopyRight Details
+        </footer>
+    
+    </div>
+
+</body>
+
+</html>
+
+

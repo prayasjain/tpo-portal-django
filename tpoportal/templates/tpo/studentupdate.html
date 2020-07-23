@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    {% load static %}
+<link rel="stylesheet" href="{% static 'css/base3.css' %}"/>
+        <title>TPO Portal</title>
+    </head>
+
+    <body>
+        
+        <div id="bigwrapper">
+    <header id="top"><h1>TPO Portal</h1></header>
+
+    <nav id="topmenu">
+        <ul>
+        <li><a href="/main" class="mainbar">Go To Main Page</a></li>
+        <li><a href="{% url 'auth:logout' %}?next=/" class="mainbar">Logout</a></li>
+       
+        </ul>
+    
+    </nav>
+    <h1>Update Details</h1>
+        <form id="update_form" method="post" action="/main/student/update/">
+
+            {% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+
+            {% for field in form.visible_fields %}
+                {{ field.errors }}
+                {{ field.help_text }}
+                {{ field }}
+                <br>
+            {% endfor %}
+
+            <input type="submit" name="submit" value="Update" />
+        </form>
+        <br> <a href="/main/student">Go Back</a>
+        <footer id="the_footer">
+        CopyRight Details
+        </footer>
+    </div>
+
+    </body>
+
+</html>
